@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latrell Williams – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: rgba(255,255,255,0.08);
+    --text: #e8e4dc;
+    --muted: rgba(232,228,220,0.45);
+    --accent: #c8b890;
+    --accent-dim: rgba(200,184,144,0.15);
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --serif: 'DM Serif Display', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    border-bottom: 0.5px solid var(--border);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; max-width: 900px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 8rem;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .hero-cta:hover { background: var(--accent-dim); }
+
+  /* DIVIDER */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+  .about-text strong { color: var(--text); font-weight: 400; }
+  .about-meta { border-left: 0.5px solid var(--border); padding-left: 2rem; }
+  .meta-row { margin-bottom: 1.5rem; }
+  .meta-label { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.25rem; }
+  .meta-val { font-size: 0.9rem; color: var(--muted); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px;
+    border: 0.5px solid var(--border);
+  }
+  .skill-cell {
+    padding: 1.5rem;
+    border: 0.5px solid var(--border);
+    transition: background 0.2s;
+  }
+  .skill-cell:hover { background: var(--accent-dim); }
+  .skill-cat { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+    padding: 0.25rem 0.6rem;
+  }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 0; }
+  .project-item {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 0;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: start;
+    cursor: default;
+    transition: padding-left 0.2s;
+  }
+  .project-item:hover { padding-left: 1rem; }
+  .project-item:last-child { border-bottom: 0.5px solid var(--border); }
+  .project-num { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 0.5rem; }
+  .project-name { font-size: 1.05rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.88rem; color: var(--muted); max-width: 520px; }
+  .project-stack { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .project-link {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    text-decoration: none; opacity: 0.7; white-space: nowrap; padding-top: 0.25rem;
+    transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 1; }
+
+  /* RESUME */
+  .resume-block { border: 0.5px solid var(--border); padding: 2.5rem; }
+  .resume-intro { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; max-width: 500px; }
+  .resume-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.75rem 1.75rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .resume-btn:hover { opacity: 0.85; }
+
+  /* CONTACT */
+  .contact-intro { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 460px; }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-row {
+    border-top: 0.5px solid var(--border);
+    padding: 1.25rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .contact-row:last-child { border-bottom: 0.5px solid var(--border); }
+  .contact-platform { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .contact-val {
+    font-size: 0.88rem; color: var(--accent); text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .contact-val:hover { opacity: 0.7; }
+
+  /* FOOTER */
+  footer {
+    max-width: 900px; margin: 0 auto;
+    padding: 2rem 3rem 3rem;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-meta { border-left: none; padding-left: 0; border-top: 0.5px solid var(--border); padding-top: 2rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">LW.dev</span>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#resume">resume</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-tag">// backend engineer &amp; quantum researcher</p>
+  <h1 class="hero-name">Latrell<br>Williams</h1>
+  <p class="hero-sub">
+    Computer Science student at Tuskegee University building backend systems and exploring quantum machine learning at the IBM-HBCU Quantum Center.
+  </p>
+  <a href="#projects" class="hero-cta">view my work →</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">01 — ABOUT</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a junior CS student specializing in <strong>backend software development</strong>, with a research focus on quantum-classical hybrid machine learning models.</p>
+      <p>Currently a Research Scholar at the <strong>IBM-HBCU Quantum Center</strong>, where I develop Quantum LSTM and Classical LSTM models for energy consumption forecasting.</p>
+      <p>This summer I'll be joining <strong>AWS</strong> as a National Security Cloud Consultant intern in Arlington, VA.</p>
+    </div>
+    <div class="about-meta">
+      <div class="meta-row">
+        <p class="meta-label">UNIVERSITY</p>
+        <p class="meta-val">Tuskegee University</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-label">MAJOR</p>
+        <p class="meta-val">Computer Science, B.S.</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-label">GRADUATION</p>
+        <p class="meta-val">May 2027</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-label">GPA</p>
+        <p class="meta-val">3.4</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-label">LOCATION</p>
+        <p class="meta-val">Tuskegee, AL</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">02 — SKILLS</p>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <p class="skill-cat">LANGUAGES</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Java</span>
+        <span class="tag">C++</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <p class="skill-cat">FRAMEWORKS</p>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">PennyLane</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Vite</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <p class="skill-cat">TOOLS &amp; PLATFORMS</p>
+      <div class="skill-tags">
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Vercel</span>
+        <span class="tag">Jupyter</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <p class="skill-cat">DOMAINS</p>
+      <div class="skill-tags">
+        <span class="tag">Quantum ML</span>
+        <span class="tag">Backend Dev</span>
+        <span class="tag">Data Mining</span>
+        <span class="tag">Time Series</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">03 — PROJECTS</p>
+  <div class="projects-list">
+
+    <div class="project-item">
+      <div>
+        <p class="project-num">001</p>
+        <p class="project-name">Quantum vs. Classical LSTM — Energy Forecasting</p>
+        <p class="project-desc">Developed and benchmarked Quantum LSTM and Classical LSTM models for energy consumption prediction on the PJM AEP hourly dataset. Classical LSTM achieved ~2.9–4% MAPE. Presented at the NSBP-NSHP 2025 Joint Conference.</p>
+        <div class="project-stack">
+          <span class="tag">Python</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">PennyLane</span>
+          <span class="tag">Quantum ML</span>
+        </div>
+      </div>
+      <a href="#" class="project-link">github ↗</a>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <p class="project-num">002</p>
+        <p class="project-name">Cybersecurity Demo — Caesar Cipher Feature</p>
+        <p class="project-desc">Contributed a Caesar Cipher encryption/decryption module to a collaborative cybersecurity education website, handling local dev setup, git workflows, and Vercel deployment.</p>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+      <a href="#" class="project-link">github ↗</a>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <p class="project-num">003</p>
+        <p class="project-name">Labor Dataset — ML Classification</p>
+        <p class="project-desc">Applied Decision Tree, Logistic Regression, and Naive Bayes classifiers to the labor.arff dataset, comparing performance across models in a data mining pipeline.</p>
+        <div class="project-stack">
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">Data Mining</span>
+        </div>
+      </div>
+      <a href="#" class="project-link">github ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <p class="section-label">04 — RESUME</p>
+  <div class="resume-block">
+    <p class="resume-intro">
+      My full resume covers my research experience, academic record, leadership roles in NSBE, ASME, and ACM, and software development work.
+    </p>
+    <a href="./resume.pdf" class="resume-btn">download resume ↓</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">05 — CONTACT</p>
+  <p class="contact-intro">Open to research collaborations, internship opportunities, and conversations about quantum computing or backend development.</p>
+  <div class="contact-links">
+    <div class="contact-row">
+      <span class="contact-platform">EMAIL</span>
+      <a href="mailto:you@example.com" class="contact-val">you@example.com</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-platform">LINKEDIN</span>
+      <a href="#" class="contact-val">linkedin.com/in/yourhandle</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-platform">GITHUB</span>
+      <a href="https://github.com/trellises" class="contact-val">github.com/trellises</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Latrell Williams</span>
+  <span class="footer-copy">built with github pages</span>
+</footer>
+
+</body>
+</html>

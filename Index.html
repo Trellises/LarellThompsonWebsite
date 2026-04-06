@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Latrell Williams – Portfolio</title>
+<title>Latrell Thompson – Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -116,6 +116,7 @@
     background: var(--border);
   }
 
+
   /* ABOUT */
   .about-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
@@ -217,6 +218,16 @@
     .about-meta { border-left: none; padding-left: 0; border-top: 0.5px solid var(--border); padding-top: 2rem; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
   }
+
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -224,28 +235,30 @@
 <nav>
   <span class="nav-logo">LW.dev</span>
   <ul class="nav-links">
-    <li><a href="#about">about</a></li>
-    <li><a href="#skills">skills</a></li>
-    <li><a href="#projects">projects</a></li>
-    <li><a href="#resume">resume</a></li>
-    <li><a href="#contact">contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#awards">awards</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-tag">// backend engineer &amp; quantum researcher</p>
-  <h1 class="hero-name">Latrell<br>Williams</h1>
+  <p class="hero-tag">// Backend Engineer &amp; Quantum Researcher</p>
+  <h1 class="hero-name">Latrell<br>Thompson</h1>
   <p class="hero-sub">
     Computer Science student at Tuskegee University building backend systems and exploring quantum machine learning at the IBM-HBCU Quantum Center.
   </p>
-  <a href="#projects" class="hero-cta">view my work →</a>
+  <a href="#projects" class="hero-cta">View My Work →</a>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <p class="section-label">01 — ABOUT</p>
   <div class="about-grid">
+    <img src="./picture.JPG" alt="Latrell Thompson" style="width: 220px; height: 220px; border-radius: 12px; object-fit: cover; object-position: top; border: 0.5px solid rgba(255,255,255,0.08);">
     <div class="about-text">
       <p>I'm a junior CS student specializing in <strong>backend software development</strong>, with a research focus on quantum-classical hybrid machine learning models.</p>
       <p>Currently a Research Scholar at the <strong>IBM-HBCU Quantum Center</strong>, where I develop Quantum LSTM and Classical LSTM models for energy consumption forecasting.</p>
@@ -266,7 +279,7 @@
       </div>
       <div class="meta-row">
         <p class="meta-label">GPA</p>
-        <p class="meta-val">3.4</p>
+        <p class="meta-val">3.5</p>
       </div>
       <div class="meta-row">
         <p class="meta-label">LOCATION</p>
@@ -340,7 +353,7 @@
           <span class="tag">Quantum ML</span>
         </div>
       </div>
-      <a href="#" class="project-link">github ↗</a>
+      <a href="https://github.com/Trellises/LTClass-Code" class="project-link">github ↗</a>
     </div>
 
     <div class="project-item">
@@ -355,25 +368,9 @@
           <span class="tag">Vercel</span>
         </div>
       </div>
-      <a href="#" class="project-link">github ↗</a>
+      <a href="https://github.com/Trellises/LTClass-Code" class="project-link">github ↗</a>
     </div>
 
-    <div class="project-item">
-      <div>
-        <p class="project-num">003</p>
-        <p class="project-name">Labor Dataset — ML Classification</p>
-        <p class="project-desc">Applied Decision Tree, Logistic Regression, and Naive Bayes classifiers to the labor.arff dataset, comparing performance across models in a data mining pipeline.</p>
-        <div class="project-stack">
-          <span class="tag">Python</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">Data Mining</span>
-        </div>
-      </div>
-      <a href="#" class="project-link">github ↗</a>
-    </div>
-
-  </div>
-</section>
 
 <!-- RESUME -->
 <section id="resume">
@@ -382,22 +379,54 @@
     <p class="resume-intro">
       My full resume covers my research experience, academic record, leadership roles in NSBE, ASME, and ACM, and software development work.
     </p>
-    <a href="./resume.pdf" class="resume-btn">download resume ↓</a>
+    <a href="./resume.pdf" class="resume-btn">Download Resume ↓</a>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <p class="section-label">05 — AWARDS & HONORS</p>
+  <div class="projects-list">
+
+    <div class="project-item">
+      <div>
+        <p class="project-num">2023</p>
+        <p class="project-name">Merit Scholarship — Tuskegee University</p>
+        <p class="project-desc">Awarded based on academic merit, supporting further educational and research projects.</p>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <p class="project-num">2024</p>
+        <p class="project-name">NSF S-STEM Scholarship</p>
+        <p class="project-desc">Awarded by the National Science Foundation recognizing academic excellence and supporting research in science and technology.</p>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <p class="project-num">2024</p>
+        <p class="project-name">IBM Basics of Quantum Information Badge</p>
+        <p class="project-desc">Earned IBM credential recognizing foundational knowledge in quantum information and computing.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label">05 — CONTACT</p>
+  <p class="section-label">06 — CONTACT</p>
   <p class="contact-intro">Open to research collaborations, internship opportunities, and conversations about quantum computing or backend development.</p>
   <div class="contact-links">
     <div class="contact-row">
       <span class="contact-platform">EMAIL</span>
-      <a href="mailto:you@example.com" class="contact-val">you@example.com</a>
+      <a href="mailto:thompsonlatrell1.o@gmail.com" class="contact-val">thompsonlatrell1.o@gmail.com</a>
     </div>
     <div class="contact-row">
       <span class="contact-platform">LINKEDIN</span>
-      <a href="#" class="contact-val">linkedin.com/in/yourhandle</a>
+      <a href="https://www.linkedin.com/in/latrell-thompson/" class="contact-val">linkedin.com/in/latrell-thompson</a>
     </div>
     <div class="contact-row">
       <span class="contact-platform">GITHUB</span>
@@ -407,9 +436,9 @@
 </section>
 
 <footer>
-  <span class="footer-copy">© 2026 Latrell Williams</span>
+  <span class="footer-copy">© 2026 Latrell Thompson's webpage&nbsp</span>
   <span class="footer-copy">built with github pages</span>
 </footer>
-
+<script src="./script.js"></script>
 </body>
 </html>

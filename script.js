@@ -1,3 +1,5 @@
+//Make the Wbsite More Smoother for transitions
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -9,7 +11,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => {
   observer.observe(section);
 });
-
+//Slowly Loads letters in for "Latrell Thompson" - Asethtically Pleasing fr
 const name = "Latrell Thompson";
 const nameEl = document.querySelector('.hero-name');
 nameEl.textContent = '';
@@ -40,7 +42,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-
+// Follow Cursor, might take out
 document.addEventListener('mousemove', (e) => {
   const dot = document.createElement('div');
   dot.style.cssText = `position:fixed;width:4px;height:4px;background:#c8b890;border-radius:50%;left:${e.clientX}px;top:${e.clientY}px;pointer-events:none;opacity:0.6;transition:opacity 0.5s;z-index:9999`;
